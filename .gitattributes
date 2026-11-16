@@ -1,0 +1,10 @@
+# Normalise line endings in the repository, independent of the checkout OS.
+* text=auto eol=lf
+
+*.svg text
+*.md text
+*.py text
+
+# model artifacts are never tracked; listed so a stray one stays binary if added
+*.glb binary
+*.bin binary

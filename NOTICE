@@ -1,0 +1,118 @@
+# NOTICE
+
+Attribution and third-party notices for `tg-companion-audit`.
+
+Copyright (c) 2026 nimo.
+License of this repository: see `LICENSE` (prose CC BY 4.0, code MIT).
+
+Published by nimo (github.com/Kkuwkl). The author is not affiliated with Telegram.
+
+This repository contains **original text and original scripts only**. It does
+not redistribute the Telegram-iOS application, its binaries, any `.glb` asset,
+or the source of the libraries below. Where the report names a library, it
+identifies the exact upstream revision so that a reader can obtain it from the
+original distributor.
+
+## Third-party components referenced by the analysis
+
+### cgltf — MIT
+
+- Upstream: https://github.com/jkuhlmann/cgltf
+- Author: Johannes Kuhlmann (GitHub: `jkuhlmann`)
+- Copyright (c) 2018-2023 Johannes Kuhlmann
+- Revision analyzed: `85cd62382dfea638278962690cf515023f33ed00`
+  (= `v1.15-11`), byte-identical to upstream at that commit
+- License text: https://opensource.org/license/mit
+
+cgltf is a single-header glTF 2.0 parser. The report describes how
+Telegram-iOS calls it and which validation it does not perform. No cgltf source
+is copied into this repository; the MIT terms above apply to cgltf itself, not
+to this repository.
+
+### OpenSubdiv — Pixar TOST 1.0
+
+- Upstream: https://github.com/PixarAnimationStudios/OpenSubdiv
+- Copyright 2013 Pixar
+- Revision analyzed: `9dab8a47` (= Release 3.7.0); 72 of 72 files
+  byte-identical to upstream
+- License: Pixar's *Technology Open Source Terms* ("TOST") 1.0, as shipped in
+  the upstream repository:
+  https://github.com/PixarAnimationStudios/OpenSubdiv/blob/release/3.7.0/LICENSE.txt
+
+TOST 1.0 is not an OSI license and is not reproduced here. Any redistribution of
+OpenSubdiv code must follow the upstream `LICENSE.txt`, including its notice
+requirements for binary redistributions. This repository redistributes none of
+it.
+
+### LTC — Linearly Transformed Cosines — BSD-3-Clause
+
+- Technique: Eric Heitz, Jonathan Dupuy, Stephen Hill, David Neubelt,
+  "Real-Time Polygonal-Light Shading with Linearly Transformed Cosines",
+  ACM SIGGRAPH 2016 (ACM TOG 35(4)).
+- Reference implementation: https://github.com/selfshadow/ltc_code
+- Copyright (c) 2016 Eric Heitz and contributors
+- License: BSD 3-Clause — https://github.com/selfshadow/ltc_code/blob/master/LICENSE
+  (also https://opensource.org/license/bsd-3-clause)
+
+The report mentions LTC in the shading path of the companion screen. No LTC
+code, shader text, or lookup table is redistributed here. BSD-3-Clause requires
+that the copyright notice, the list of conditions, and the disclaimer be
+retained in source redistributions, and that neither the name of the copyright
+holder nor contributor names be used to endorse derived products — relevant only
+if you redistribute that code yourself.
+
+## Security identifiers referenced in this report
+
+`CVE-2026-112018`, `CVE-2026-112019`, `CVE-2026-32845`, `CVE-2026-75148` are
+**not** findings of this repository, and are **not** authored, discovered, or
+claimed by the authors of this repository.
+
+They belong to their respective authors and publishing organizations:
+
+| CVE | Author | Publisher |
+|---|---|---|
+| CVE-2026-112018 | HaiND | NVD / VulnCheck |
+| CVE-2026-112019 | Asilbek Muhammadiyev | NVD / VulnCheck |
+| CVE-2026-32845 | Ana Kapulica | NVD / VulnCheck |
+| CVE-2026-75148 | Ana Kapulica | NVD / VulnCheck |
+
+All credit for those identifiers, their analysis, and their descriptions belongs
+to those people and to NVD / VulnCheck. This repository references them only as
+public context — to separate this report's scope from unrelated work in the same
+product area — and does not restate their technical details beyond what their
+public records already say. If you cite a CVE, cite its NVD entry, not this
+repository.
+
+## Trademarks
+
+Telegram, Telegram-iOS, and related names are trademarks of their respective
+owners (Telegram Messenger LLP / Telegram FZ-LLC). This repository is an
+independent security review; it is **not affiliated with, endorsed by, or
+sponsored by Telegram**. The names are used nominatively, to identify the
+software under review. No Telegram logo, icon, wordmark, or brand asset is
+included: the banner in `docs/assets/` uses a generic type-and-line treatment
+only.
+
+Apple, iOS, Metal, and App Store are trademarks of Apple Inc., used for
+identification only.
+
+## Quoted source excerpts
+
+Short excerpts of Telegram-iOS source (file paths, line ranges, a handful of
+lines of Objective-C++/Swift/C++) appear in the report as quotation for the
+purpose of security review and interoperative criticism. Copyright in those
+excerpts remains with their rights holders. Excerpts are kept minimal; where a
+longer passage would be needed, the report gives a permalink to the upstream
+repository instead of copying code.
+
+## Assets
+
+- `docs/assets/banner.svg` — original work by the authors of this repository,
+  CC BY 4.0. It contains no third-party logo, icon, font file, or embedded
+  raster image; text is rendered with the reader's generic monospace font.
+
+## Reporting an error in attribution
+
+If a credit above is wrong, missing, or overstated, open a non-public report as
+described in `SECURITY.md`; attribution fixes are applied promptly and do not
+require a CVE.

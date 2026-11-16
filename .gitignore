@@ -1,0 +1,9 @@
+/evidence
+*.glb
+*.bin
+.venv
+__pycache__
+*.pyc
+
+# internal working notes: canonical numbers + "do not claim publicly" list
+/FACTS.md

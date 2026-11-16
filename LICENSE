@@ -1,0 +1,103 @@
+# License
+
+Copyright (c) 2026 nimo (github.com/Kkuwkl)
+
+This repository is **dual-licensed**. It mixes written analysis with small
+tooling scripts, and the two are covered by different terms.
+
+| Part of the repository | License | Canonical text |
+|---|---|---|
+| All prose: `README.md`, `README.ru.md`, `SECURITY.md`, `NOTICE`, `PUBLISH-CHECKLIST.md`, `docs/**/*.md` | CC BY 4.0 | https://creativecommons.org/licenses/by/4.0/legalcode |
+| All visuals made for this report: `docs/assets/**` | CC BY 4.0 | https://creativecommons.org/licenses/by/4.0/legalcode |
+| All program code: `scripts/**` and any other source files added later | MIT | https://opensource.org/license/mit |
+| Third-party code and data referenced by the analysis (`cgltf`, OpenSubdiv, LTC) | their own licenses; see `NOTICE` | — |
+| Quoted excerpts of Telegram-iOS source | remain the property of their rights holders; used as short quotation for review and security research | — |
+
+**Full texts:** the canonical license texts live at the URLs above. The complete
+CC BY 4.0 legal code (several hundred lines) is deliberately **not** reproduced
+here — the URL is the authoritative version. The MIT text is short and is
+included in full below, because MIT only grants rights when the notice travels
+with the work.
+
+---
+
+## 1. Documentation and text — Creative Commons Attribution 4.0 International
+
+The written material listed above is licensed under CC BY 4.0.
+
+**Full text:** https://creativecommons.org/licenses/by/4.0/legalcode
+**Human-readable summary:** https://creativecommons.org/licenses/by/4.0/
+
+You are free to share (copy and redistribute in any medium or format) and to
+adapt (remix, transform, build upon) the material for any purpose, including
+commercially.
+
+Under the following terms:
+
+- **Attribution** — you must give appropriate credit, provide a link to the
+  license, and indicate if changes were made. You may do so in any reasonable
+  manner, but not in any way that suggests the licensor endorses you or your use.
+- **No additional restrictions** — you may not apply legal terms or
+  technological measures that legally restrict others from doing anything the
+  license permits.
+
+No warranties are given. The license may not give you all of the permissions
+necessary for your intended use; other rights such as publicity, privacy, or
+moral rights may limit how you use the material.
+
+Suggested attribution line:
+
+> "tg-companion-audit" by nimo, licensed CC BY 4.0.
+> Source: https://github.com/Kkuwkl/tg-companion-audit — changes were made.
+
+Scope note: CC BY 4.0 covers the *text of this analysis*. It does not grant any
+rights in Telegram-iOS, in Apple platform software, or in the third-party
+libraries named in `NOTICE`.
+
+---
+
+## 2. Code — MIT License
+
+Applies to `scripts/check_repo.py` and to any program code added to this
+repository later.
+
+```
+MIT License
+
+Copyright (c) 2026 nimo (github.com/Kkuwkl)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+## Why one file instead of `LICENSE` + `LICENSE-docs`
+
+Two files would be the cleaner layout for a software project, but this
+repository is a *report* that happens to contain one script:
+
+- a single `LICENSE` is what a reader opens first, and the split is stated in
+  the first table instead of hiding in a second file;
+- GitHub's license detector reads the MIT block and classifies the repository as
+  MIT — which is correct for the code, and the CC BY 4.0 part is spelled out in
+  prose right above it;
+- fewer files to keep in sync when the text changes.
+
+If you reuse this material, follow whichever section matches the file you take.
+When in doubt: prose → CC BY 4.0, code → MIT.
