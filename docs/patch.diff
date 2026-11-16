@@ -1,0 +1,32 @@
+diff --git a/submodules/CompanionRenderer/Sources/CompanionRenderer.mm b/submodules/CompanionRenderer/Sources/CompanionRenderer.mm
+--- a/submodules/CompanionRenderer/Sources/CompanionRenderer.mm
++++ b/submodules/CompanionRenderer/Sources/CompanionRenderer.mm
+@@ -10,5 +10,15 @@
+ using namespace gift;
+ namespace {
+ void check(bool ok,const char *message) { if(!ok) throw std::runtime_error(message); }
+-NSError *errorFor(const std::string &message) { return [NSError errorWithDomain:@"Companion" code:1 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithUTF8String:message.c_str()]}]; }
++// std::exception::what() is not guaranteed to be valid UTF-8: cgltf and the JSON
++// reader put asset-controlled strings into error messages. -[NSString
++// stringWithUTF8String:] returns nil for invalid UTF-8, and a nil value in a
++// dictionary literal raises NSInvalidArgumentException, which no C++ catch block
++// and no Swift do/catch can observe.
++NSError *errorFor(const std::string &message) {
++    NSString *text = [[NSString alloc] initWithBytes:message.data() length:message.size() encoding:NSUTF8StringEncoding];
++    if (!text) text = [[NSString alloc] initWithBytes:message.data() length:message.size() encoding:NSISOLatin1StringEncoding];
++    if (!text) text = [NSString stringWithFormat:@"Companion error (%lu bytes, non-text payload)", (unsigned long)message.size()];
++    return [NSError errorWithDomain:@"Companion" code:1 userInfo:@{NSLocalizedDescriptionKey: text}];
++}
+ struct GPUPrimitive { id<MTLBuffer> vertex,index,influences,morphs; };
+diff --git a/submodules/CompanionRenderer/Core/GiftModel.cpp b/submodules/CompanionRenderer/Core/GiftModel.cpp
+--- a/submodules/CompanionRenderer/Core/GiftModel.cpp
++++ b/submodules/CompanionRenderer/Core/GiftModel.cpp
+@@ -286,7 +286,8 @@
+     for(size_t i=0;i<raw->skins_count;i++) {
+         const auto& src=raw->skins[i];Skin skin;
+         require(src.joints_count<=256,"Skeleton exceeds 256 joints");
++        require(src.inverse_bind_matrices==nullptr || src.inverse_bind_matrices->count>=src.joints_count,"Inverse bind matrices do not cover the skeleton");
+         auto binds=src.inverse_bind_matrices?floats(src.inverse_bind_matrices,16):std::vector<float>{};
+         for(size_t j=0;j<src.joints_count;j++) {
+             skin.joints.push_back(nodeIndex(src.joints[j]));Mat4 bind;
+             if(!binds.empty()) std::copy_n(binds.data()+j*16,16,bind.m);

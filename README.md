@@ -200,7 +200,7 @@ No `.glb` payloads are published. The findings contain field-level descriptions 
 
 ## License and credits
 
-MIT (see [`LICENSE`](LICENSE)). The parser CVEs belong to their reporters — **HaiND**, **Asilbek Muhammadiyev** and **Ana Kapulica**; this repository only documents how Telegram-iOS uses the affected library. Written and published by **nimo** ([@Kkuwkl](https://github.com/Kkuwkl)).
+MIT for the scripts, **CC BY 4.0 for this write-up** (see [`LICENSE`](LICENSE) for the split). The parser CVEs belong to their reporters — **HaiND**, **Asilbek Muhammadiyev** and **Ana Kapulica**; this repository only documents how Telegram-iOS uses the affected library. Written and published by **nimo** ([@Kkuwkl](https://github.com/Kkuwkl)).
 
 ---
 
@@ -210,9 +210,17 @@ MIT (see [`LICENSE`](LICENSE)). The parser CVEs belong to their reporters — **
 |---|---|
 | [`docs/en/findings.md`](docs/en/findings.md) | The four findings in detail, with code excerpts and evidence |
 | [`docs/en/methodology.md`](docs/en/methodology.md) | The five stands, what was measured with what, and the limits |
+| [`FACTS.md`](FACTS.md) | Canonical numbers, versions and non-claims (EN/RU) |
+| [`docs/en/vendor-report.md`](docs/en/vendor-report.md) | The report sent to `security@telegram.org` on 2026-11-16 |
+| [`docs/patch.diff`](docs/patch.diff) | Minimal two-hunk fix for the error path and the skeleton invariant |
+| [`docs/diagram.md`](docs/diagram.md) | Mermaid diagrams: data flow and the trust boundary |
+| [`docs/assets/banner.svg`](docs/assets/banner.svg) | Repository banner (no third-party logos) |
 | [`README.ru.md`](README.ru.md) | Русская версия (Russian version) |
-| [`LICENSE`](LICENSE) | MIT |
+| [`LICENSE`](LICENSE) | MIT for scripts, CC BY 4.0 for the write-up |
+| [`NOTICE`](NOTICE) | Vendored libraries, their licences, and CVE attribution |
 | [`SECURITY.md`](SECURITY.md) | Reporting and publication policy |
+| [`PUBLISH-CHECKLIST.md`](PUBLISH-CHECKLIST.md) | How this repository was published |
+| [`scripts/check_repo.py`](scripts/check_repo.py) | Link, path, table and wording checks used before publishing |
 
 ---
 
